@@ -1,0 +1,11 @@
+{% extends 'blank_layout.html' %}
+{% load  static %}
+{% block content %}
+<h>List Movies</h1>
+    {% for movies_obj in movies %}
+        <h1>Title: {{movies_obj.title | upper }} </h1>
+        <p>Summary: {{movies_obj.description}}</p>
+        <h4>Year: {{movies_obj.year}}</h4>
+    {% endfor %}
+{% endblock content %}
+
