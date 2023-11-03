@@ -2,10 +2,20 @@
 {% load  static %}
 {% block content %}
 <h>List Movies</h1>
+    <table>
+        <tr><th>Title</th><th>Description<th>Year</th><th>censor</th><th>Edit/Delete</th></tr>
     {% for movies_obj in movies %}
-        <h1>Title: {{movies_obj.title | upper }} </h1>
-        <p>Summary: {{movies_obj.description}}</p>
-        <h4>Year: {{movies_obj.year}}</h4>
+    <tr><td><h1> {{movies_obj.title}} </h1>
+        {% if movies_obj.poster %}
+            <img src="{{ movies_obj.poster.url }}">
+        {% endif %}
+    </td>
+        <td><p> {{movies_obj.description}}</p></td>
+        <td><h4> {{movies_obj.year}}</h4></td>
+        <td><h4> {{movies_obj.censor_details}}</h4></td>
+        <td><a href="{% url 'edit' movies_obj.id %}">edit</a>/<a href="{% url 'delete' movies_obj.id %}">delete</a></td>
+    </tr>
     {% endfor %}
+    </table>
 {% endblock content %}
 

@@ -20,5 +20,5 @@ from hello_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/',views.print_hello)
+    path('hai/',views.print_hello)
 ]
