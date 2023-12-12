@@ -1,0 +1,27 @@
+{% extends 'blank_layout.html' %}
+{% block content %}
+<p><h1>Create User</h1></p>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>
+    <label>UserName: </label> <input type="text" name="username"/>
+</p>
+<p>
+    <label>Password: </label> <input type="text" name="password"/>
+</p>
+    <button type="sumbit">Signup</button>
+</form>
+
+<p>
+    {% if user %}
+    New user created with username {{ user.username }}
+    {% endif %}
+</p>
+
+<p style="background-color: blue;">
+    {% if error_message %}
+    username already exists {{ user.username }}
+    {% endif %}
+</p>
+
+{% endblock content %}

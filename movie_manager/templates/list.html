@@ -1,13 +1,22 @@
 {% extends 'blank_layout.html' %}
+
 {% load  static %}
+
 {% block content %}
-<h>List Movies</h1>
+
+{% for movies_obj in recent_movie_set %}
+<h1> {{movies_obj.title}} </h1>
+{% endfor %}
+
+
+<h>List Movies {{ visits }} times visited</h1>
     <table>
         <tr><th>Title</th><th>Description<th>Year</th><th>censor</th><th>Edit/Delete</th></tr>
-    {% for movies_obj in movies %}
+    
+        {% for movies_obj in movies %}
     <tr><td><h1> {{movies_obj.title}} </h1>
         {% if movies_obj.poster %}
-            <img src="{{ movies_obj.poster.url }}">
+            <img src="{{ movies_obj.poster.url }}" height="30%" width="50%">
         {% endif %}
     </td>
         <td><p> {{movies_obj.description}}</p></td>
